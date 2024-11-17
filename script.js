@@ -152,7 +152,7 @@ function paginationGenarator(page) {
 
         let prevButtonClick = document.querySelector('button.active')
         prevButtonClick.classList.remove('active')
-
+        window.scrollTo({ top: 0, behavior: 'instant' });
         button.classList.add('active')
     })
     return button
