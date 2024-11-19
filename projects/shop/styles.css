@@ -231,7 +231,7 @@ img{
         width: 105%;
     }
     .AddToCart{
-        margin-left: 1px;
+        margin-left: 0px;
         display: block;
     }
 }
