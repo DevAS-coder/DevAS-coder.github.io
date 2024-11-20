@@ -1,7 +1,8 @@
 let container = document.querySelector('.container')
+let body = document.querySelector('body')
 let pagination = document.querySelector('.pagination')
 let cartBtn = document.querySelector('.cartBtn')
-let cart = document.querySelector('.cart')
+let cart = document.querySelector('.cartBg')
 let close = document.querySelector('.close')
 let items = document.querySelector('.items')
 let finalpricenumb = document.querySelector('.finalpricenumb')
@@ -13,8 +14,14 @@ let userCart = [];
 let currentPage = 1
 let productPerPage = 4
 
-cartBtn.addEventListener('click', function(){cart.style.display = 'block'})
-close.addEventListener('click', function(){cart.style.display = 'none'})
+cartBtn.addEventListener('click', function(){
+    cart.style.display = 'block'
+    body.style.overflow = 'hidden'
+})
+close.addEventListener('click', function(){
+    cart.style.display = 'none'
+    body.style.overflow = 'visible'
+})
 
 async function fetchProducts(){
     const response = await fetch('https://fakestoreapi.com/products?limit=10')
