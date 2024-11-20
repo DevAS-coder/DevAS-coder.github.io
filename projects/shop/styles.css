@@ -232,10 +232,14 @@ img {
   .items {
     width: 105%;
   }
-  .AddToCart {
-    margin-left: 0px;
-    display: block;
+  .close{
+    left: 90%;
   }
+  .removeitem {
+    margin-left: 30px;
+    position: relative;
+    top: -30px;
+}
 }
 
 .button {
