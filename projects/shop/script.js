@@ -62,13 +62,37 @@ function displayProducts(currentPage, productPerPage){
         price.classList.add('price')
         price.innerHTML = Product.price + '$'
 
-        let AddToCart = document.createElement('button')
-        AddToCart.classList.add('AddToCart')
-        AddToCart.innerHTML = 'Add To Cart'
+        let AddToCart = document.createElement('div')
+        AddToCart.classList.add('button')
+
+        let button_wrapper = document.createElement('div')
+        button_wrapper.classList.add('button-wrapper')
+
+        let text_button_wrapper = document.createElement('div')
+        text_button_wrapper.classList.add('text')
+        text_button_wrapper.innerHTML = 'Buy Now'
+
+        button_wrapper.append(text_button_wrapper)
+        button_wrapper.innerHTML += `<span class="icon">
+            <svg viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"></path>
+            </svg>
+            </span>`
+
+        AddToCart.append(button_wrapper)
+
         AddToCart.addEventListener('click',function(){
             addProductToCart(Product.id)
-            AddToCart.innerHTML = 'Added!'
-            setTimeout(function(){AddToCart.innerHTML = 'Add To Cart'},2000)
+            button_wrapper.innerHTML = `<div class="AddToCartDone">Got It!</div>`
+            setTimeout(function(){
+                button_wrapper.innerHTML = ''
+                button_wrapper.append(text_button_wrapper)
+                button_wrapper.innerHTML += `<span class="icon">
+                    <svg viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"></path>
+                    </svg>
+                    </span>`
+            },2000)
         })
 
         productImg.appendChild(Img)
@@ -83,9 +107,7 @@ function displayProducts(currentPage, productPerPage){
 function addProductToCart(ProductId){
     let mainProduct = currentPageProducts.find(product => product.id === ProductId)
     userCart.push(mainProduct)
-    console.log(userCart);
     updateCart(userCart)
-    
 }
 
 function updateCart(userCart){
