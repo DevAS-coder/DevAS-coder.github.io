@@ -60,4 +60,5 @@ function reset_game() {
     result.textContent = 'Waiting for Winner'
     result.classList.remove('win')
     result.classList.remove('fail')
+    gamestate = Array(9).fill(null)
 }
