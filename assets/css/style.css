@@ -527,7 +527,8 @@ animation: floating 2s ease-in-out infinite;
     }
     .skills{
         padding: 25px;
-        padding-bottom: 200px;
+        height: auto;
+        padding-bottom: 150px;
     }
     .myselfText{
         padding: 40px;
