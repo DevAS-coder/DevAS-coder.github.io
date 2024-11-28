@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather UI</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="search">
+        <span class="ctname">City Name : </span>
+        <input id="inp" class="inp" type="text">
+        <button class="btn" id="submit">Submit</button>
+    </div>
+    <div class="loader">
+        <div class="spinner"></div>
+        <br>
+        <p style="text-align: center;" class="notifier">Waiting For Input...</p>
+    </div>
+  <div class="weather-app">
+    <header class="header">
+      <div class="location">City</div>
+    </header>
+    <main class="main">
+      <div class="weather-info">
+        <div class="icon">☁️</div>
+        <div class="status">Cloudy</div>
+        <div class="temperature">0°</div>
+      </div>
+      <div class="details">
+        <div class="detail-item">
+          <span class="label"><span class="icon">🕒</span> Local Time:</span>
+          <span class="value time">00:00 AM</span>
+        </div>
+        <div class="detail-item">
+          <span class="label"><span class="icon">🌡️</span> Temp:</span>
+          <span class="value temp">0°C</span>
+        </div>
+        <div class="detail-item">
+          <span class="label"><span class="icon">💨</span> Wind Speed:</span>
+          <span class="value windspeed">0 km/h</span>
+        </div>
+        <div class="detail-item">
+          <span class="label"><span class="icon">💧</span> Humidity:</span>
+          <span class="value humidity">0%</span>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="js/script.js"></script>
+</body>
+</html>
