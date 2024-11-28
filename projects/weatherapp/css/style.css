@@ -161,16 +161,22 @@ body {
 
 @media screen and (max-width: 600px) {
   .ctname {
-    font-size: 20px;
+    font-size: 15px;
   }
   .inp {
-    font-size: 20px;
+    font-size: 15px;
+    padding: 10px;
+    width: 150px;
   }
   .btn {
-    font-size: 20px;
-    margin: 0;
+    font-size: 15px;
+    padding: 10px;
   }
   .search{
+    padding: 20px;
     text-align: center;
+  }
+  .details{
+    margin-top: 0px;
   }
 }

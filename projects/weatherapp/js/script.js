@@ -40,31 +40,33 @@ function getweather() {
     })
     .then(data => {
       
-      if (data.error.code) {
+      if (data.error != undefined) {
         let notif = document.querySelector(".notifier").innerHTML = 'Something Went Wrong Check Your City Name. Check Spaces or Anything Else';
+      } else{
+
+        let CityName = data.location.name;
+        let Countryname = data.location.country;
+        let LocalTime = data.location.localtime;
+        let time = LocalTime.split(" ")
+        let hour = time[1].split(':')
+        let Temp = data.current.temperature;
+        let windSpeed = data.current.wind_speed;
+        let humidity = data.current.humidity;
+        let wheatherDis = data.current.weather_descriptions;
+  
+        cityNameElem.innerHTML = CityName + ", " + Countryname;
+        timeElem.innerHTML = LocalTime;
+        tempElem.innerHTML = Temp+'°C';
+        windSpeedElem.innerHTML = windSpeed + " km/h";
+        humidityElem.innerHTML = humidity+'%';
+        weatherDisElem.innerHTML = wheatherDis;
+        uptemp.innerHTML = Temp+'°';
+        
+        icon.innerHTML = getWeatherIcon(wheatherDis[0],hour)
+  
+        hide_spinner();
       }
 
-      let CityName = data.location.name;
-      let Countryname = data.location.country;
-      let LocalTime = data.location.localtime;
-      let time = LocalTime.split(" ")
-      let hour = time[1].split(':')
-      let Temp = data.current.temperature;
-      let windSpeed = data.current.wind_speed;
-      let humidity = data.current.humidity;
-      let wheatherDis = data.current.weather_descriptions;
-
-      cityNameElem.innerHTML = CityName + ", " + Countryname;
-      timeElem.innerHTML = LocalTime;
-      tempElem.innerHTML = Temp+'°C';
-      windSpeedElem.innerHTML = windSpeed + " km/h";
-      humidityElem.innerHTML = humidity+'%';
-      weatherDisElem.innerHTML = wheatherDis;
-      uptemp.innerHTML = Temp+'°';
-      
-      icon.innerHTML = getWeatherIcon(wheatherDis[0],hour)
-
-      hide_spinner();
     });
 }
 
