@@ -550,6 +550,10 @@ animation: floating 2s ease-in-out infinite;
     .ball{
         display: none;
     }
+    .boxwrapper{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }
 
 .box button{
@@ -560,4 +564,9 @@ animation: floating 2s ease-in-out infinite;
     padding: 20px;
     border-radius: 50px;
     cursor: pointer;
+}
+
+.resume h1{
+    font-size: 25px;
+    padding-bottom: 30px;
 }
