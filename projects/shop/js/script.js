@@ -98,7 +98,7 @@ function displayProducts(currentPage, productPerPage){
 
         AddToCart.addEventListener('click',function(){
             addProductToCart(Product.id)
-            button_wrapper.innerHTML = `<div class="AddToCartDone">Got It!</div>`
+            button_wrapper.innerHTML = `<div class="AddToCartDone">Added!</div>`
             setTimeout(function(){
                 button_wrapper.innerHTML = ''
                 button_wrapper.append(text_button_wrapper)
@@ -110,8 +110,13 @@ function displayProducts(currentPage, productPerPage){
             },2000)
         })
 
+        let seemoreBtn = document.createElement('a')
+        seemoreBtn.setAttribute('href', `productpage.html?id=${Product.id}`)
+        seemoreBtn.classList.add('seemore')
+        seemoreBtn.innerHTML = 'See More'
+
         productImg.appendChild(Img)
-        productInfo.append(title,category,price,AddToCart)
+        productInfo.append(title,category,price,AddToCart,seemoreBtn)
         mainWrapper.append(productImg,productInfo)
         container.appendChild(mainWrapper)
         
