@@ -175,8 +175,12 @@ body {
   .search{
     padding: 20px;
     text-align: center;
+    z-index: 99;
   }
   .details{
     margin-top: 0px;
+  }
+  body{
+    height: auto;
   }
 }
