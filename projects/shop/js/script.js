@@ -14,6 +14,11 @@ let userCart = [];
 let currentPage = 1
 let productPerPage = 4
 
+let varuserLocalCart = localStorage.getItem('userlocalcart');
+if(varuserLocalCart){
+    userCart = JSON.parse(varuserLocalCart)
+}
+
 window.addEventListener('click', function(e){
     if(e.target === cart){
         cart.style.display = 'none'
@@ -127,6 +132,19 @@ function displayProducts(currentPage, productPerPage){
 function addProductToCart(ProductId){
     let mainProduct = currentPageProducts.find(product => product.id === ProductId)
     userCart.push(mainProduct)
+    
+    varuserLocalCart = localStorage.getItem('userlocalcart');
+
+    if(varuserLocalCart){
+        varuserLocalCart = JSON.parse(varuserLocalCart)
+        varuserLocalCart.push(mainProduct)
+        localStorage.setItem('userlocalcart', JSON.stringify(varuserLocalCart))
+    }
+    else{
+        varuserLocalCart = []
+        varuserLocalCart.push(mainProduct)
+        localStorage.setItem('userlocalcart', JSON.stringify(varuserLocalCart))
+    }
     updateCart(userCart)
 }
 
@@ -164,8 +182,19 @@ function updateCart(userCart){
 }
 
 function deletefromcart(itemid){
-    let Removeitem = userCart.find(item => item.id === itemid)
-    userCart.pop(Removeitem)
+    let Removeitem = userCart.findIndex(item => item.id === itemid)
+    if(Removeitem != -1){
+        userCart.splice(Removeitem, 1)
+    }
+
+    varuserLocalCart = localStorage.getItem('userlocalcart');
+
+    if(varuserLocalCart){
+        varuserLocalCart = JSON.parse(varuserLocalCart)
+        varuserLocalCart.splice(Removeitem, 1)
+        localStorage.setItem('userlocalcart', JSON.stringify(varuserLocalCart))
+    }
+
     updateCart(userCart)
 }
 
@@ -199,3 +228,5 @@ function paginationGenarator(page) {
     })
     return button
 }
+
+updateCart(userCart)

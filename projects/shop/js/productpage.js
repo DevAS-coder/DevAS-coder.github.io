@@ -22,6 +22,11 @@ let PriceSum = 0
 let productarray;
 let userCart = [];
 
+let varuserLocalCart = localStorage.getItem('userlocalcart');
+if(varuserLocalCart){
+    userCart = JSON.parse(varuserLocalCart)
+}
+
 async function fetchProducts(){
     const response = await fetch('https://fakestoreapi.com/products?limit=10')
     let data = await response.json()
@@ -50,14 +55,23 @@ function addProductToCart(ProductId){
     let mainProduct = productarray.find(function(currentProduct){
         return currentProduct.id == idparam;
     })
-    
     userCart.push(mainProduct)
+    varuserLocalCart = localStorage.getItem('userlocalcart');
+
+    if(varuserLocalCart){
+        varuserLocalCart = JSON.parse(varuserLocalCart)
+        varuserLocalCart.push(mainProduct)
+        localStorage.setItem('userlocalcart', JSON.stringify(varuserLocalCart))
+    }
+    else{
+        varuserLocalCart = []
+        varuserLocalCart.push(mainProduct)
+        localStorage.setItem('userlocalcart', JSON.stringify(varuserLocalCart))
+    }
     updateCart(userCart)
 }
 
 function updateCart(userCart){
-    console.log(userCart);
-    
     items.innerHTML = ''
     PriceSum = 0
     userCart.forEach(function(item) {
@@ -91,7 +105,17 @@ function updateCart(userCart){
 
 function deletefromcart(itemid){
     let Removeitem = userCart.find(item => item.id === itemid)
-    userCart.pop(Removeitem)
+    if(Removeitem != -1){
+        userCart.splice(Removeitem, 1)
+    }
+
+    varuserLocalCart = localStorage.getItem('userlocalcart');
+
+    if(varuserLocalCart){
+        varuserLocalCart = JSON.parse(varuserLocalCart)
+        varuserLocalCart.splice(Removeitem, 1)
+        localStorage.setItem('userlocalcart', JSON.stringify(varuserLocalCart))
+    }
     updateCart(userCart)
 }
 
@@ -130,3 +154,4 @@ closeBtn.addEventListener('click', function(){
 back.addEventListener('click', function(){
     window.history.back()
 })
+updateCart(userCart)
