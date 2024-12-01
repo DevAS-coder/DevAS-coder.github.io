@@ -20,7 +20,7 @@ function hide_spinner() {
 
 function show_spinner() {
   loader.style.display = "flex";
-  loader.style.display = "block";
+  spinner.style.display = "block";
   weatherapp.style.display = "none";
 }
 
