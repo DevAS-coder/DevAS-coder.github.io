@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>MusicPLayer</title>
+  </head>
+  <body>
+    <div class="container">
+      <img class="cover" src="assets/cover/creep.jpg" alt="creep" />
+      <div class="infos">
+        <span class="songname">Creep</span><br />
+        <span class="artist">RadioHead</span>
+      </div>
+      <div class="minutes">
+        <span class="currentTime">00:00</span>
+        <span class="allTime">00:00</span>
+      </div>
+      <div class="prBar">
+        <div class="prFill"></div>
+        <audio id="mainSong" src="assets/song/creep.mp3"></audio>
+      </div>
+      <div class="controls">
+        <img class="backsong" src="assets/icon/back.png" alt="back" />
+        <img class="playsong" src="assets/icon/play.png" alt="play" />
+        <img class="nextsong" src="assets/icon/next.png" alt="next" />
+      </div>
+    </div>
+    <div class="playlist-container">
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
