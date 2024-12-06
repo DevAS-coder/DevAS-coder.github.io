@@ -26,13 +26,15 @@ function formatTime(timeInSeconds) {
     return `${minutes}:${seconds}`;
 }
 
-function playSong(index, frompl) {
+function playSong(index, frompl,ft) {
     let currentSong = musiclist[index];
     audio.src = currentSong.url;
     musicCover.src = currentSong.icon;
     SongName.textContent = currentSong.name;
     Artist.textContent = currentSong.artist;
-    audio.play();
+    if (ft === false){
+        audio.play();
+    }
 
 	if(frompl === true){
 		playBtn.src = "assets/icon/pause.png";
@@ -68,7 +70,7 @@ function updatePlaylistUI() {
             </div>`;
         songItem.addEventListener("click", () => {
             currentSongIndex = index;
-            playSong(currentSongIndex, true);
+            playSong(currentSongIndex, true,false);
         });
         playlist.appendChild(songItem);
     });
@@ -104,4 +106,4 @@ audio.addEventListener("ended", () => {
 });
 
 updatePlaylistUI();
-playSong(currentSongIndex,false);
+playSong(currentSongIndex,false,true);
