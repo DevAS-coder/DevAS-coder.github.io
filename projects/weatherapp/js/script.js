@@ -1,6 +1,7 @@
 const smtBtn = document.getElementById("submit");
 let body = document.querySelector("body");
-let spinner = document.querySelector(".loader");
+let loader = document.querySelector(".loader");
+let spinner = document.querySelector(".spinner");
 let cityNameElem = document.querySelector(".location");
 let weatherDisElem = document.querySelector(".status");
 let uptemp = document.querySelector(".temperature");
@@ -13,13 +14,13 @@ let icon = document.querySelector(".icon");
 let inp = document.getElementById("inp");
 
 function hide_spinner() {
-  spinner.style.display = "none";
+  loader.style.display = "none";
   weatherapp.style.display = "block";
-  
 }
 
 function show_spinner() {
-  spinner.style.display = "flex";
+  loader.style.display = "flex";
+  spinner.style.display = "block";
   weatherapp.style.display = "none";
 }
 
