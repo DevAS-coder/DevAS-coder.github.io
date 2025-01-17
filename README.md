@@ -46,11 +46,3 @@ The website is implemented with a responsive design, making it accessible on all
 - **Responsive Design**: Ensuring a great user experience on all devices.
 
 ---
-
-## Setup and Installation
-
-To run this project locally, follow these steps:
-
-1. Clone the repository:
-   ```bash
-     open index.html
