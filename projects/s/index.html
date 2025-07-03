@@ -98,6 +98,20 @@
   </div>
   <div id="confetti"></div>
   <script>
+  function createConfetti() {
+    for (let i = 0; i < 100; i++) {
+      const piece = document.createElement("div");
+      piece.classList.add("confetti-piece");
+      piece.style.left = Math.random() * 100 + "vw";
+      piece.style.animationDuration = (Math.random() * 2 + 3) + "s";
+      piece.style.setProperty("--i", i);
+      confetti.appendChild(piece);
+      
+      // حذف بعد از پایان انیمیشن برای تمیز نگه داشتن DOM
+      setTimeout(() => piece.remove(), 6000);
+    }
+  }
+
     const countdown = document.getElementById("countdown");
 const box = document.getElementById("message-box");
 const confetti = document.getElementById("confetti");
