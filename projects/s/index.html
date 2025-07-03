@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>S</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Vazirmatn", sans-serif;
+    }
+    body, html {
+      height: 100%;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: #fff;
+    }
+    #countdown {
+      font-size: 4rem;
+      opacity: 0;
+      animation: fadein 1s forwards;
+      transition: all 0.3s ease;
+    }
+    @keyframes fadein {
+      to { opacity: 1; }
+    }
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(2px, -2px); }
+      60% { transform: translate(-2px, -2px); }
+      80% { transform: translate(2px, 2px); }
+      100% { transform: translate(0); }
+    }
+    .glitch {
+      animation: glitch 0.3s steps(2, end) 3;
+      color: #f00;
+      text-shadow: 1px 0 #0ff, -1px 0 #f0f;
+    }
+    #message-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: #222;
+      color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      z-index: 10;
+      transition: transform 0.6s ease;
+    }
+    #message-box.active {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    #confetti {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 5;
+    }
+    .confetti-piece {
+      width: 10px;
+      height: 10px;
+      background: hsl(calc(var(--i) * 20), 100%, 50%);
+      position: absolute;
+      top: -10px;
+      animation: fall linear forwards;
+      opacity: 0;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-10px) rotate(0); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body dir="rtl">
+  <div id="countdown">3</div>
+  <div id="message-box">
+    <h2>سورپرایز 🎉</h2>
+    <p>زینب! امیدوارم تولدت امسال باحال‌ترین خاطره‌ت بشه!🎁<br>فقط خواستم یه نوتیفیکیشن خوشحال‌کننده وسط این همه روز معمولی ظاهر بشه :)</p>
+  </div>
+  <div id="confetti"></div>
+  <script>
+    const countdown = document.getElementById("countdown");
+const box = document.getElementById("message-box");
+const confetti = document.getElementById("confetti");
+
+let count = 3;
+countdown.textContent = count;
+
+const interval = setInterval(() => {
+  count--;
+  if (count === 0) {
+    clearInterval(interval);
+    countdown.textContent = "!";
+    countdown.classList.add("glitch");
+
+    // افکت نویز با کاراکترهای تصادفی
+    const symbols = ['@', '#', '$', '%', '&', '*', '~', 'Ξ', 'Ω', '¥', '₿', 'π', '∆'];
+    let scramble = 0;
+    const scrambleInterval = setInterval(() => {
+      let random = '';
+      for (let i = 0; i < 6; i++) {
+        random += symbols[Math.floor(Math.random() * symbols.length)];
+      }
+      countdown.textContent = random;
+      scramble++;
+      if (scramble > 6) { // حدود 1.2 ثانیه
+        clearInterval(scrambleInterval);
+        countdown.style.display = 'none';
+        box.classList.add("active");
+        createConfetti();
+      }
+    }, 200);
+    
+  } else {
+    countdown.textContent = count;
+    countdown.style.opacity = 0;
+    void countdown.offsetWidth;
+    countdown.style.opacity = 1;
+  }
+}, 1000);
+
+  </script>
+</body>
+</html>
