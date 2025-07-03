@@ -112,6 +112,12 @@
     }
   }
 
+  function startConfettiLoop() {
+  createConfetti();
+  setInterval(createConfetti, 3000); // هر ۳ ثانیه یه بار
+}
+
+
     const countdown = document.getElementById("countdown");
 const box = document.getElementById("message-box");
 const confetti = document.getElementById("confetti");
@@ -140,7 +146,8 @@ const interval = setInterval(() => {
         clearInterval(scrambleInterval);
         countdown.style.display = 'none';
         box.classList.add("active");
-        createConfetti();
+        startConfettiLoop();
+
       }
     }, 200);
     
